@@ -1,0 +1,27 @@
+﻿@model DocxFileModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Upload .docx files here</h1>
+    @using (Html.BeginForm("SaveDoc", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        
+                    
+                @Html.EditorFor(m => m.Sender.To, new{@class = "form-control"})
+            
+        <div style="margin-top:20px;">
+                @Html.EditorFor(m => m.File, new{@class = "form-control"})
+            </div>
+            
+            
+       
+        <div style="margin-top:20px;">
+        <button type="submit" >Submit</button>
+        <button type="reset">Reset</button>
+        </div>
+    }
+</div>
